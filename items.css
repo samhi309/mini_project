@@ -1,0 +1,134 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    min-height:100vh;
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color:#f9fff1;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+h1,h2,p{
+    text-align: center;
+}
+nav{
+    background-color:#4CAF50;
+    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+nav ul{
+    width :100%;
+    list-style:none;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+}
+nav li{
+    height:50px;
+    }
+    nav a{
+        height:100%;
+        padding: 0 30px;
+        text-decoration: none;
+        display:flex;
+        align-items: center;
+        color: black;
+
+    }
+
+    nav a:hover{
+        background-color: #f0f0f0;
+    }
+    nav li:first-child{
+        margin-right: auto;
+    }
+    .sidebar{
+        position: fixed;
+        top:0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        z-index: 999;
+        background-color: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        box-shadow:-10px 0 10px rgba(0, 0, 0, 0.1);
+        display:none;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        
+    }
+    .sidebar li{
+        width:100%;
+        
+    }
+    .sidebar a{
+        width:100%;
+        
+    }
+    @media(max-width: 800px){
+        .hideOnMobile{
+            display:none;
+        }
+    }
+    
+
+
+
+main {
+    padding: 100px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding:20px;
+    object-fit: cover;
+    justify-content: center;
+    
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: calc(33.333% - 20px);
+}
+
+.product img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+button.add-to-cart {
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.add-to-cart:hover {
+    background-color: #218838;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color:grey;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}

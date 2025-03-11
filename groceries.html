@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Organic Fruits Store</title>
+    <link rel="stylesheet" href="items.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#black">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
+                </a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#delivery">Delivery</a></li>
+            </ul>
+            <ul>
+                <li><a href="#"> Organic Fruit Store</a></li>
+                <li class="hideOnMobile"><a href="#home">Home</a></li>
+                <li class="hideOnMobile"><a href="#products">Products</a></li>
+                <li class="hideOnMobile"><a href="#about">About</a></li>
+                <li class="hideOnMobile"><a href="#contact">Contact</a></li>
+                <li class="hideOnMobile"><a href="#delivery">Delivery</a></li>
+                <li class="menu-button" onclick="showSidebar()">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black">
+                            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    <main>
+        <section id="home">
+            <h2 >Welcome to Our Fruits Store!</h2> <br>
+            <p>Find the best products for your health.</p> 
+
+        </section><br>
+        <section id="products">
+            <h2>Our Products</h2><br>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSG7CcTc-_eP7eW8rMi7hA1eAuP57__AGMEQ&s" alt="Apple">
+                    <h3>Apples</h3>
+                    <p>$1.00 each</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://www.health.com/thmb/OZgW2YQtFb9qJ3PbySNei3YdgPw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-Stocksy_txp5e95690asrw300_Medium_934585-e870449543284eed8aa4be52fc09a4ed.jpg" alt="Orange">
+                    <h3>Oranges</h3>
+                    <p>$0.50 each</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0ehjgLVg3kknvMTLrziduwgx9a4eMTKEpeg&s" alt="Grapes">
+                <h3>Grapes</h3>
+                <p>10$</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpiDJUaN-D4OVWOyKmojOqND72EdIFUZdsVA&s" alt="Kiwi">
+                <h3>Kiwi</h3>
+                <p>12.0$</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://cdn.britannica.com/54/119354-050-FA32210A/pineapple.jpg?w=400&h=300&c=crop" alt="Pine Apple">
+                <h3>Pine Apples</h3>
+                <p>$12.00 each</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUBJGY1vSYtkTzDXuURmkpVdxigc0l-JKw_A&s" alt="Mangoes">
+                <h3>Mangoes</h3>
+                <p>$2.00 each</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>      
+        </section><br><br>
+        <section id="about">
+            <h2>About Us</h2><br>
+            <p>We are dedicated to providing fresh and high-quality supplies.</p>
+        </section><br>
+        <section id="contact">
+            <h2>Contact Us</h2><br>
+            <p>Email: contact@grocerystore.com</p>
+            <p>Address:Tanuku-near bus stand</p>
+            <p>Phone:9908474487</p>
+        </section><br>
+        <section id="delivery">
+            <h2>Delivery</h2><br>
+            <p>Cash On Delivery : Available</p>
+            <p>Returns are accepted</p>
+            <p>conditions applied</p>
+        </section><br><br>
+       <footer>
+        <div id="products">
+        <p>&copy;Fruits store flatform</p>
+
+    </div>
+       </footer>
+    </main>
+    </header>
+    
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex'; // Fix: Now it's properly shown
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+    </script>
+    </header>
+</body>
+</html>
