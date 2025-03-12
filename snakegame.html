@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: lightgreen;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            background-color: rgba(0, 0, 0, 0.8);
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+        }
+        .score {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .game-over {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            display: none;
+        }
+        .game-over button {
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="score">Score: <span id="score">0</span></div>
+    <div class="game-over" id="gameOverScreen">
+        <p>Game Over!</p>
+        <button onclick="restartGame()">Restart</button>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const box = 20;
+        let snake = [{ x: 10 * box, y: 10 * box }];
+        let direction = "RIGHT";
+        let nextDirection = "RIGHT";
+        let food = {
+            x: Math.floor(Math.random() * (canvas.width / box)) * box,
+            y: Math.floor(Math.random() * (canvas.height / box)) * box,
+        };
+        let score = 0;
+        let game;
+
+        document.addEventListener("keydown", changeDirection);
+        function changeDirection(event) {
+            const key = event.keyCode;
+            if (key == 37 && direction !== "RIGHT") nextDirection = "LEFT";
+            else if (key == 38 && direction !== "DOWN") nextDirection = "UP";
+            else if (key == 39 && direction !== "LEFT") nextDirection = "RIGHT";
+            else if (key == 40 && direction !== "UP") nextDirection = "DOWN";
+        }
+
+        function draw() {
+            direction = nextDirection;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "red";
+            ctx.fillRect(food.x, food.y, box, box);
+            
+            ctx.fillStyle = "lime";
+            snake.forEach((segment) => {
+                ctx.fillRect(segment.x, segment.y, box, box);
+            });
+
+            let newHead = { x: snake[0].x, y: snake[0].y };
+            if (direction === "LEFT") newHead.x -= box;
+            if (direction === "UP") newHead.y -= box;
+            if (direction === "RIGHT") newHead.x += box;
+            if (direction === "DOWN") newHead.y += box;
+
+            if (newHead.x === food.x && newHead.y === food.y) {
+                score++;
+                document.getElementById("score").textContent = score;
+                food = {
+                    x: Math.floor(Math.random() * (canvas.width / box)) * box,
+                    y: Math.floor(Math.random() * (canvas.height / box)) * box,
+                };
+                snake.push({});
+            }
+            
+            snake.pop();
+
+            if (
+                newHead.x < 0 ||
+                newHead.x >= canvas.width ||
+                newHead.y < 0 ||
+                newHead.y >= canvas.height ||
+                snake.some((segment) => segment.x === newHead.x && segment.y === newHead.y)
+            ) {
+                clearInterval(game);
+                document.getElementById("gameOverScreen").style.display = "block";
+                return;
+            }
+
+            snake.unshift(newHead);
+        }
+        game = setInterval(draw, 100);
+        
+        function restartGame() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
